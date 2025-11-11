@@ -14,23 +14,16 @@ RpgBuilderSolution.sln
 src/
   RpgBuilder/
     Program.cs
-    (suggested) Domain/
-      RPGCharacter.cs
-      Stats.cs
-    (suggested) Builder/
-      IRPGCharacterBuilder.cs
-      WarriorBuilder.cs
-      MageBuilder.cs
-      CustomCharacterBuilder.cs
-    (suggested) Director/
-      CharacterDirector.cs
+    Character.cs
+    CharacterBuilder.cs
+    RpgBuilder.csproj
 tests/
   RpgBuilder.Tests/
-    RpgBuilderTests.cs
-    RpgBuilder.StateLeakBug.Tests.cs   # optional for the debugging demo
+    UnitTest1.cs
+    RpgBuilder.Tests.csproj
 ```
 
-> Folder names may differ in your repo; the pattern remains the same: Domain, Builder, Director, Program.
+> The project uses a simple Builder pattern implementation with `Character` as the product and `CharacterBuilder` as the builder class.
 
 ---
 
