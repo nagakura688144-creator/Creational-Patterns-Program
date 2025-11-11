@@ -1,38 +1,38 @@
 ﻿using RpgBuilder;
 
-Console.WriteLine("===== RPG Builder パターン デモ =====\n");
+Console.WriteLine("===== RPG Builder Pattern Demo =====\n");
 
-// 戦士キャラクターを作成
+// Create a warrior character
 var warrior = new CharacterBuilder()
-    .WithName("アーサー")
-    .WithClass("戦士")
+    .WithName("Arthur")
+    .WithClass("Warrior")
     .WithLevel(10)
     .WithStats(health: 200, mana: 50, strength: 18, dexterity: 12, intelligence: 8, constitution: 16)
-    .AddSkills("剣術", "防御", "挑発")
-    .Equip("武器", "鋼の剣")
-    .Equip("防具", "プレートアーマー")
-    .Equip("盾", "鋼の盾")
+    .AddSkills("Swordsmanship", "Defense", "Taunt")
+    .Equip("Weapon", "Steel Sword")
+    .Equip("Armor", "Plate Armor")
+    .Equip("Shield", "Steel Shield")
     .Build();
 
 Console.WriteLine(warrior);
 
-// 魔法使いキャラクターを作成
+// Create a mage character
 var mage = new CharacterBuilder()
-    .WithName("メルリナ")
-    .WithClass("魔法使い")
+    .WithName("Merlina")
+    .WithClass("Mage")
     .WithLevel(15)
     .WithStats(health: 80, mana: 200, strength: 6, dexterity: 10, intelligence: 20, constitution: 8)
-    .AddSkills("ファイアボール", "アイスボルト", "ライトニング", "テレポート")
-    .Equip("武器", "魔法の杖")
-    .Equip("防具", "ローブ")
+    .AddSkills("Fireball", "Ice Bolt", "Lightning", "Teleport")
+    .Equip("Weapon", "Magic Staff")
+    .Equip("Armor", "Robe")
     .Build();
 
 Console.WriteLine(mage);
 
-// 盗賊キャラクターを作成
+// Create a rogue character
 var rogue = new CharacterBuilder()
-    .WithName("シルバー")
-    .WithClass("盗賊")
+    .WithName("Silver")
+    .WithClass("Rogue")
     .WithLevel(8)
     .WithHealth(120)
     .WithMana(60)
@@ -40,13 +40,13 @@ var rogue = new CharacterBuilder()
     .WithDexterity(20)
     .WithIntelligence(14)
     .WithConstitution(10)
-    .AddSkill("隠密")
-    .AddSkill("開錠")
-    .AddSkill("毒攻撃")
-    .Equip("武器", "ダガー")
-    .Equip("防具", "レザーアーマー")
+    .AddSkill("Stealth")
+    .AddSkill("Lockpicking")
+    .AddSkill("Poison Attack")
+    .Equip("Weapon", "Dagger")
+    .Equip("Armor", "Leather Armor")
     .Build();
 
 Console.WriteLine(rogue);
 
-Console.WriteLine("\n===== デモ終了 =====");
+Console.WriteLine("\n===== Demo Complete =====");

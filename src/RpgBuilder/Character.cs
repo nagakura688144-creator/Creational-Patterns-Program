@@ -1,7 +1,7 @@
 namespace RpgBuilder;
 
 /// <summary>
-/// RPGキャラクターを表すクラス
+/// Represents an RPG character
 /// </summary>
 public class Character
 {
@@ -19,25 +19,25 @@ public class Character
 
     public override string ToString()
     {
-        var skills = Skills.Any() ? string.Join(", ", Skills) : "なし";
+        var skills = Skills.Any() ? string.Join(", ", Skills) : "None";
         var equipment = Equipment.Any() 
             ? string.Join(", ", Equipment.Select(e => $"{e.Key}: {e.Value}"))
-            : "なし";
+            : "None";
 
         return $"""
-            ===== キャラクター情報 =====
-            名前: {Name}
-            クラス: {Class}
-            レベル: {Level}
+            ===== Character Information =====
+            Name: {Name}
+            Class: {Class}
+            Level: {Level}
             HP: {Health}
             MP: {Mana}
-            筋力: {Strength}
-            敏捷: {Dexterity}
-            知力: {Intelligence}
-            体力: {Constitution}
-            スキル: {skills}
-            装備: {equipment}
-            ============================
+            Strength: {Strength}
+            Dexterity: {Dexterity}
+            Intelligence: {Intelligence}
+            Constitution: {Constitution}
+            Skills: {skills}
+            Equipment: {equipment}
+            ===================================
             """;
     }
 }

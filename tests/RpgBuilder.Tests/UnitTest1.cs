@@ -5,54 +5,54 @@ namespace RpgBuilder.Tests;
 public class CharacterBuilderTests
 {
     [Fact]
-    public void Build_基本的なキャラクターを作成できる()
+    public void Build_CanCreateBasicCharacter()
     {
         // Arrange & Act
         var character = new CharacterBuilder()
-            .WithName("テストキャラ")
-            .WithClass("戦士")
+            .WithName("Test Character")
+            .WithClass("Warrior")
             .WithLevel(1)
             .WithHealth(100)
             .Build();
 
         // Assert
-        Assert.Equal("テストキャラ", character.Name);
-        Assert.Equal("戦士", character.Class);
+        Assert.Equal("Test Character", character.Name);
+        Assert.Equal("Warrior", character.Class);
         Assert.Equal(1, character.Level);
         Assert.Equal(100, character.Health);
     }
 
     [Fact]
-    public void Build_名前が未設定の場合_例外をスローする()
+    public void Build_ThrowsExceptionWhenNameNotSet()
     {
         // Arrange & Act & Assert
         Assert.Throws<InvalidOperationException>(() =>
         {
             new CharacterBuilder()
-                .WithClass("戦士")
+                .WithClass("Warrior")
                 .Build();
         });
     }
 
     [Fact]
-    public void Build_クラスが未設定の場合_例外をスローする()
+    public void Build_ThrowsExceptionWhenClassNotSet()
     {
         // Arrange & Act & Assert
         Assert.Throws<InvalidOperationException>(() =>
         {
             new CharacterBuilder()
-                .WithName("テストキャラ")
+                .WithName("Test Character")
                 .Build();
         });
     }
 
     [Fact]
-    public void WithStats_ステータスを一括設定できる()
+    public void WithStats_CanSetAllStatsAtOnce()
     {
         // Arrange & Act
         var character = new CharacterBuilder()
-            .WithName("テストキャラ")
-            .WithClass("戦士")
+            .WithName("Test Character")
+            .WithClass("Warrior")
             .WithStats(health: 200, mana: 50, strength: 18, dexterity: 12, intelligence: 8, constitution: 16)
             .Build();
 
@@ -66,66 +66,66 @@ public class CharacterBuilderTests
     }
 
     [Fact]
-    public void AddSkills_複数のスキルを追加できる()
+    public void AddSkills_CanAddMultipleSkills()
     {
         // Arrange & Act
         var character = new CharacterBuilder()
-            .WithName("テストキャラ")
-            .WithClass("戦士")
-            .AddSkills("剣術", "防御", "挑発")
+            .WithName("Test Character")
+            .WithClass("Warrior")
+            .AddSkills("Swordsmanship", "Defense", "Taunt")
             .Build();
 
         // Assert
         Assert.Equal(3, character.Skills.Count);
-        Assert.Contains("剣術", character.Skills);
-        Assert.Contains("防御", character.Skills);
-        Assert.Contains("挑発", character.Skills);
+        Assert.Contains("Swordsmanship", character.Skills);
+        Assert.Contains("Defense", character.Skills);
+        Assert.Contains("Taunt", character.Skills);
     }
 
     [Fact]
-    public void Equip_装備を追加できる()
+    public void Equip_CanAddEquipment()
     {
         // Arrange & Act
         var character = new CharacterBuilder()
-            .WithName("テストキャラ")
-            .WithClass("戦士")
-            .Equip("武器", "鋼の剣")
-            .Equip("防具", "プレートアーマー")
+            .WithName("Test Character")
+            .WithClass("Warrior")
+            .Equip("Weapon", "Steel Sword")
+            .Equip("Armor", "Plate Armor")
             .Build();
 
         // Assert
         Assert.Equal(2, character.Equipment.Count);
-        Assert.Equal("鋼の剣", character.Equipment["武器"]);
-        Assert.Equal("プレートアーマー", character.Equipment["防具"]);
+        Assert.Equal("Steel Sword", character.Equipment["Weapon"]);
+        Assert.Equal("Plate Armor", character.Equipment["Armor"]);
     }
 
     [Fact]
-    public void Reset_ビルダーをリセットできる()
+    public void Reset_CanResetBuilder()
     {
         // Arrange
         var builder = new CharacterBuilder()
-            .WithName("最初のキャラ")
-            .WithClass("戦士");
+            .WithName("First Character")
+            .WithClass("Warrior");
 
         // Act
         builder.Reset();
         var character = builder
-            .WithName("新しいキャラ")
-            .WithClass("魔法使い")
+            .WithName("New Character")
+            .WithClass("Mage")
             .Build();
 
         // Assert
-        Assert.Equal("新しいキャラ", character.Name);
-        Assert.Equal("魔法使い", character.Class);
+        Assert.Equal("New Character", character.Name);
+        Assert.Equal("Mage", character.Class);
     }
 
     [Fact]
-    public void Build_レベルに基づいてHPが自動設定される()
+    public void Build_AutoSetsHealthBasedOnLevel()
     {
         // Arrange & Act
         var character = new CharacterBuilder()
-            .WithName("テストキャラ")
-            .WithClass("戦士")
+            .WithName("Test Character")
+            .WithClass("Warrior")
             .WithLevel(5)
             .Build();
 

@@ -1,14 +1,14 @@
 namespace RpgBuilder;
 
 /// <summary>
-/// Builderパターンを実装したキャラクタービルダー
+/// Character builder implementing the Builder pattern
 /// </summary>
 public class CharacterBuilder
 {
     private Character _character = new();
 
     /// <summary>
-    /// キャラクターの名前を設定
+    /// Sets the character's name
     /// </summary>
     public CharacterBuilder WithName(string name)
     {
@@ -17,7 +17,7 @@ public class CharacterBuilder
     }
 
     /// <summary>
-    /// キャラクターのクラスを設定
+    /// Sets the character's class
     /// </summary>
     public CharacterBuilder WithClass(string characterClass)
     {
@@ -26,7 +26,7 @@ public class CharacterBuilder
     }
 
     /// <summary>
-    /// キャラクターのレベルを設定
+    /// Sets the character's level
     /// </summary>
     public CharacterBuilder WithLevel(int level)
     {
@@ -35,7 +35,7 @@ public class CharacterBuilder
     }
 
     /// <summary>
-    /// ステータスを一括設定
+    /// Sets all stats at once
     /// </summary>
     public CharacterBuilder WithStats(int health, int mana, int strength, int dexterity, int intelligence, int constitution)
     {
@@ -49,7 +49,7 @@ public class CharacterBuilder
     }
 
     /// <summary>
-    /// HPを設定
+    /// Sets the character's health
     /// </summary>
     public CharacterBuilder WithHealth(int health)
     {
@@ -58,7 +58,7 @@ public class CharacterBuilder
     }
 
     /// <summary>
-    /// MPを設定
+    /// Sets the character's mana
     /// </summary>
     public CharacterBuilder WithMana(int mana)
     {
@@ -67,7 +67,7 @@ public class CharacterBuilder
     }
 
     /// <summary>
-    /// 筋力を設定
+    /// Sets the character's strength
     /// </summary>
     public CharacterBuilder WithStrength(int strength)
     {
@@ -76,7 +76,7 @@ public class CharacterBuilder
     }
 
     /// <summary>
-    /// 敏捷を設定
+    /// Sets the character's dexterity
     /// </summary>
     public CharacterBuilder WithDexterity(int dexterity)
     {
@@ -85,7 +85,7 @@ public class CharacterBuilder
     }
 
     /// <summary>
-    /// 知力を設定
+    /// Sets the character's intelligence
     /// </summary>
     public CharacterBuilder WithIntelligence(int intelligence)
     {
@@ -94,7 +94,7 @@ public class CharacterBuilder
     }
 
     /// <summary>
-    /// 体力を設定
+    /// Sets the character's constitution
     /// </summary>
     public CharacterBuilder WithConstitution(int constitution)
     {
@@ -103,7 +103,7 @@ public class CharacterBuilder
     }
 
     /// <summary>
-    /// スキルを追加
+    /// Adds a skill to the character
     /// </summary>
     public CharacterBuilder AddSkill(string skill)
     {
@@ -112,7 +112,7 @@ public class CharacterBuilder
     }
 
     /// <summary>
-    /// 複数のスキルを追加
+    /// Adds multiple skills to the character
     /// </summary>
     public CharacterBuilder AddSkills(params string[] skills)
     {
@@ -121,7 +121,7 @@ public class CharacterBuilder
     }
 
     /// <summary>
-    /// 装備を追加
+    /// Equips an item to the character
     /// </summary>
     public CharacterBuilder Equip(string slot, string item)
     {
@@ -130,22 +130,22 @@ public class CharacterBuilder
     }
 
     /// <summary>
-    /// キャラクターを構築
+    /// Builds the character
     /// </summary>
     public Character Build()
     {
-        // 必須項目の検証
+        // Validate required fields
         if (string.IsNullOrWhiteSpace(_character.Name))
         {
-            throw new InvalidOperationException("キャラクター名は必須です。");
+            throw new InvalidOperationException("Character name is required.");
         }
 
         if (string.IsNullOrWhiteSpace(_character.Class))
         {
-            throw new InvalidOperationException("クラスは必須です。");
+            throw new InvalidOperationException("Character class is required.");
         }
 
-        // レベルに基づいてステータスを自動調整（オプション）
+        // Auto-adjust stats based on level (optional)
         if (_character.Level > 0 && _character.Health == 0)
         {
             _character.Health = 100 + (_character.Level * 10);
@@ -155,7 +155,7 @@ public class CharacterBuilder
     }
 
     /// <summary>
-    /// ビルダーをリセット
+    /// Resets the builder
     /// </summary>
     public CharacterBuilder Reset()
     {
